@@ -1,0 +1,25 @@
+
+  .inp {
+    border:none;
+    background-color: #F4FEFE;
+    border-bottom: 1px solid #22427C;
+    margin-right: 20px;
+    outline: none;
+ }
+ .inpl {
+  border:none;
+  border-bottom: 1px solid #1890ff;
+  outline: none;
+}
+
+ .pad{
+
+    margin-left: 60px;
+
+ }
+ .m {
+   margin-left: 100px;
+ }
+.t {
+  padding-top: 20px;
+}

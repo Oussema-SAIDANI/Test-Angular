@@ -1,0 +1,35 @@
+<div class="container">
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <div *ngIf="msg" class="alert alert-success">{{msg}}</div>
+    <form (ngSubmit)="!f.invalid && Save()" #f="ngForm">
+      <div class="form-group">
+        <label for="besoin">
+         Besoin
+        </label>
+        <input type="text" class="form-control" name="besoin" [(ngModel)]="besoin.besoin" required>
+      </div>
+      <div class="form-group">
+        <label for="ao">
+         AO
+        </label>
+        <input type="text" class="form-control" name="ao" [(ngModel)]="besoin.ao" required>
+      </div>
+      <div class="form-group">
+        <label for="statut">
+         Statut
+        </label>
+        <input type="text" class="form-control" name="statut" [(ngModel)]="besoin.statut" required>
+      </div>
+      <div class="form-group">
+        <label for="cv">
+         CV
+        </label>
+        <input type="file" class="form-control" name="cv" (change)="selectImage($event)" required>
+      </div>
+
+      <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Enregistrer</button>
+    </form>
+  </div>
+</div>
+</div>

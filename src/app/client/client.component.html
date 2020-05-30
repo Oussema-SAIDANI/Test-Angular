@@ -1,0 +1,71 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li>
+         <button class="btn btn-success" routerLink="client"> Clients </button>
+        </li>
+        <li style="padding-left: 5px;" >
+          <form>
+            <input
+              type="text"
+              class="form-control"
+              name="searchString"
+              placeholder="Search."
+              [(ngModel)]="searchString"
+            />
+          </form>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+
+<div class="container" style="margin-top: 20px;">
+<table class="table table-hover" style="text-align: center;">
+  <thead>
+    <tr>
+      <th>Titre</th>
+      <th>Nom</th>
+      <th>Prenom</th>
+      <th>Tel</th>
+      <th>Email</th>
+      <th>Observation</th>
+      <th>Linkedin</th>
+      <th>Rappel</th>
+      <th>Fiche Contact</th>
+    </tr>
+  </thead>
+  <tbody >
+    <tr *ngFor="let client of clients | filter : 'nom' : searchString; let i = index">
+      <td>
+          {{client.titre}}
+      </td>
+      <td>
+        {{client.nom}}
+      </td>
+      <td>
+        {{client.prenom}}
+      </td>
+      <td>
+        {{client.tel}}
+      </td>
+      <td>
+        {{client.email}}
+      </td>
+      <td>
+        {{client.observation}}
+      </td>
+      <td>
+        {{client.linkedin}}
+      </td>
+      <td>
+        {{client.rappel | date}}
+      </td>
+      <td ><button class="btn btn-outline-info btn-rounded waves-effect" (click)="FicheContact(client.id)">
+        <i class="fa fa-eye"></i></button></td>
+    </tr>
+  </tbody>
+</table>
+</div>

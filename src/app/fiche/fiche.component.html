@@ -1,0 +1,181 @@
+<app-nav></app-nav>
+<div class="container">
+
+   <span style="font-weight: bold;padding-left: 20em;font-size: large;"> <span style="color: #048B9A;">Fiche Contact : </span>  {{client.nom }} {{client.prenom }} - {{entreprises[0].nom}}</span>
+   <!-- debut div qui contient informations entreprises -->
+  <div class="shadow-sm p-3 mb-5 rounded" style="margin-top: 5px;background-color:#F4FEFE ;">
+    <div class="pad">
+      <table>
+        <tr style="text-align: center;font-weight:bold;">
+          <td>Nom</td>
+          <td>Secteur</td>
+          <td>Activite</td>
+          <td>Droit</td>
+          <td>Adresse</td>
+        </tr>
+         <tr>
+         <td><input type="text" class="inp" value="{{entreprises[0].nom}}"></td>
+         <td><input type="text" class="inp" value="{{entreprises[0].secteur}}"></td>
+         <td><input type="text" class="inp" value="{{entreprises[0].activite}}"></td>
+         <td><input type="text" class="inp" value="{{entreprises[0].droit}}"></td>
+         <td><input type="text" class="inp" value="{{entreprises[0].adresse}}"></td>
+        </tr>
+        <tr style="text-align: center;font-weight:bold;">
+          <td class="t">Code Postal</td>
+          <td class="t">Ville</td>
+          <td class="t">Note</td>
+          <td class="t">Télèphone</td>
+          <td class="t">Télèphone</td>
+        </tr>
+         <tr>
+         <td><input type="text" class="inp" value="{{entreprises[0].cp}}"></td>
+         <td><input type="text" class="inp" value="{{entreprises[0].ville}}"></td>
+         <td><input type="text" class="inp" value="{{entreprises[0].note}}"></td>
+         <td><input type="text" class="inp" value="{{entreprises[0].tel1}}"></td>
+         <td><input type="text" class="inp" value="{{entreprises[0].tel2}}"></td>
+        </tr>
+        <tr style="text-align: center;font-weight:bold;" >
+          <td></td>
+          <td class="t">Précision</td>
+          <td class="t" >Email</td>
+          <td class="t">Linkedin</td>
+        </tr>
+         <tr>
+           <td></td>
+         <td><input type="text" class="inp" value="{{entreprises[0].precision}}"></td>
+         <td>
+          <i class="fa fa-envelope" style="font-size:20px;padding-right: 7px;"></i>
+           <input type="text" class="inp" value="{{entreprises[0].email}}">
+        </td>
+         <td>
+          <i class="fa fa-linkedin-square" style="color:blue;font-size:20px;padding-right: 7px;"></i>
+          <input type="text" class="inp" value="{{entreprises[0].linkedin}}">
+
+        </td>
+        </tr>
+     </table>
+
+    </div>
+  </div>
+ <!-- Fin div qui contienne informations entreprises -->
+   <div>
+      <table>
+        <tr>
+          <!-- debut div qui contient client -->
+          <td rowspan='2'>
+            <div class="shadow-sm rounded" style="float: left;margin-right:15px; padding: 7px;background-color:#F4FEFE ;">
+            <div class="form-group">
+              <label for="Titre" style="font-weight: bold;padding-top: 5px;">Titre</label>
+                <input type="text" class="form-control inp"value="{{client.titre}}">
+            </div>
+            <div class="form-group">
+              <table>
+                <tr style="font-weight: bold;"><td>Nom</td> <td>Prenom</td></tr>
+                <tr><td><input type="text" class="inp"value="{{client.nom}}"></td><td><input type="text" class="inp"value="{{client.prenom}}"></td></tr>
+                <tr style="font-weight: bold;"><td style="padding-top: 12px;">Email</td> <td style="padding-top: 12px;">Rappel </td></tr>
+                <tr><td><input type="text" class="inp"value="{{client.email}}"></td><td><input type="date" class="inp"value="{{client.rappel | date:'short'}}" > <i class="fa fa-calendar"></i> </td></tr>
+                <tr style="font-weight: bold;"><td style="padding-top: 12px;">Télèphone</td> <td style="padding-top: 12px;">Linkedin</td></tr>
+                <tr><td><input type="text" class="inp"value="{{client.tel}}"></td><td><input type="text" class="inp"value="{{client.linkedin}}"></td></tr>
+                </table>
+            </div>
+            <div class="form-group">
+              <label style="font-weight: bold;">Observation</label>
+              <textarea rows="3" class="form-control" style="margin-top: 0px; margin-bottom: 0px; height: 140px;"></textarea>
+            </div>
+          </div></td>
+          <!-- Fin div qui contient client -->
+
+          <!-- debut div qui contient conversation -->
+          <td>
+            <div class="shadow-sm rounded" style="padding-bottom: 10px; margin-bottom: 30px;">
+              <span style="text-align: center ; margin-left: 350px;font-weight: bold;color: #048B9A;">Conversations</span>
+              <table class="table table-hover" style="width: 710px; margin-top: 7px;">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Qualite</th>
+                    <th>Conversation</th>
+                    <th>Reponse</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let conversation of conversations">
+                    <td>
+                        {{conversation.date | date:'short'}}
+                    </td>
+                    <td style="text-align: center;">
+                      <div style="width: 12px;height: 12px;  border-radius: 12px; background-color:#1FA055; " *ngIf= " conversation.qualite === 'TresBien' " ></div>
+                      <div style="width: 12px;height: 12px;  border-radius: 12px; background-color: #1B019B;" *ngIf= " conversation.qualite === 'Bien'"></div>
+                      <div style="width: 12px;height: 12px;  border-radius: 12px; background-color: #FFFF6B; text-align: center;" *ngIf= " conversation.qualite === 'Moyenne'" ></div>
+                      <div style="width: 12px;height: 12px;  border-radius: 12px; background-color: #DB1702;" *ngIf= " conversation.qualite === 'Mauvaise'"></div>
+                  </td>
+                  <td>
+                    {{conversation.conversation}}
+                </td>
+                <td>
+                  {{conversation.reponse}}
+              </td>
+                    </tr>
+                  </tbody>
+                  </table>
+                  <table>
+                    <tr >
+                      <td style="padding-left: 7px;">
+                       <div style="width: 12px;height: 12px;  border-radius: 12px; background-color:#1FA055;float: left;margin-top: 7px;"></div><span style="margin-right: 5px;font-size: 12px;padding-left: 3px;">Tres Bien</span>
+                      </td>
+                      <td>
+                       <div style="width: 12px;height: 12px;  border-radius: 12px; background-color:#1B019B;float: left;margin-top: 7px;"></div> <span style="margin-right: 5px;font-size: 12px;padding-left: 3px;">Bien</span>
+                       </td>
+                       <td>
+                        <div style="width: 12px;height: 12px;  border-radius: 12px; background-color:#FFFF6B;float: left;margin-top: 7px;"></div> <span style="margin-right: 5px;font-size: 12px;padding-left: 3px;">Moyenne</span>
+                       </td>
+                       <td>
+                         <div style="width: 12px;height: 12px;  border-radius: 12px; background-color:#DB1702;float: left;margin-top: 7px;"></div> <span style="margin-right: 5px;font-size: 12px;padding-left: 3px;">Mauvaise</span>
+                       </td>
+                    </tr>
+                  </table> <br>
+                  <span style="padding-left: 7px;">Nouvelle Conversation<button class="btn btn-outline-info btn-rounded"   style="margin-left: 5px;" (click)="nav()"> <i class="fa fa-plus"></i></button></span>
+                </div>
+          </td>
+          <!-- fin div qui contient conversations -->
+        </tr>
+        <!-- debut div qui contient besoins -->
+        <tr>
+          <td>
+            <div class="shadow-sm rounded" style="padding-bottom: 20px;">
+              <span style="text-align: center; margin-left: 350px;color: #048B9A;font-weight: bold;">Besoins</span>
+              <table class="table table-hover " style="width: 710px;">
+                <thead>
+                  <tr>
+                    <th>Besoin</th>
+                    <th>AO</th>
+                    <th>Statut</th>
+                    <th>CV</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let besoin of besoins">
+                    <td>
+                        {{besoin.besoin}}
+                    </td>
+                    <td>
+                      {{besoin.ao}}
+                    </td>
+                    <td>
+                      {{besoin.statut}}
+                    </td>
+                    <td><button class="btn" (click)="consult(besoin.cv)"><i class="fa fa-eye"></i></button></td>
+                  </tr>
+                </tbody>
+              </table>
+              <span style="padding-left: 7px;"> Nouvelle Besoin<button class="btn btn-outline-info btn-rounded"  style="margin-left: 5px;"  (click)="BesoinNavigate()"> <i class="fa fa-plus"></i></button></span>
+            </div>
+          </td>
+        </tr>
+        <!-- Fin div qui contient besoins -->
+      </table>
+   </div>
+  </div>
+
+
+
