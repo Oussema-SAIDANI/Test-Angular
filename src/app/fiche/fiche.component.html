@@ -3,8 +3,8 @@
 
    <span style="font-weight: bold;padding-left: 20em;font-size: large;"> <span style="color: #048B9A;">Fiche Contact : </span>  {{client.nom }} {{client.prenom }} - {{entreprises[0].nom}}</span>
    <!-- debut div qui contient informations entreprises -->
-  <div class="shadow-sm p-3 mb-5 rounded" style="margin-top: 5px;background-color:#F4FEFE ;">
-    <div class="pad">
+  <div class="shadow-sm p-3 mb-5 rounded table-responsive" style="margin-top: 5px;background-color:#F4FEFE ;">
+    <div class="table-responsive">
       <table>
         <tr style="text-align: center;font-weight:bold;">
           <td>Nom</td>
@@ -58,7 +58,8 @@
     </div>
   </div>
  <!-- Fin div qui contienne informations entreprises -->
-   <div>
+   <div class="row">
+     <div class="table-responsive p-3">
       <table>
         <tr>
           <!-- debut div qui contient client -->
@@ -175,6 +176,7 @@
         <!-- Fin div qui contient besoins -->
       </table>
    </div>
+  </div>
   </div>
 
 
